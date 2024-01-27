@@ -1,0 +1,99 @@
+[
+    {
+        "id": "de9b0e9df453ac12",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "392ca1e1f1e0cf7a",
+        "type": "http in",
+        "z": "de9b0e9df453ac12",
+        "name": "",
+        "url": "/myfriends",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "c9175cb839560f40"
+            ]
+        ]
+    },
+    {
+        "id": "799de412fe9011cb",
+        "type": "http response",
+        "z": "de9b0e9df453ac12",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 660,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c9175cb839560f40",
+        "type": "function",
+        "z": "de9b0e9df453ac12",
+        "name": "function 1",
+        "func": "msg.topic=\"SELECT * FROM myfriends\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "ab0afd0b6dfd5ead"
+            ]
+        ]
+    },
+    {
+        "id": "81935ca6fc0fc7f9",
+        "type": "debug",
+        "z": "de9b0e9df453ac12",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ab0afd0b6dfd5ead",
+        "type": "mysql",
+        "z": "de9b0e9df453ac12",
+        "mydb": "96940c97d549cb19",
+        "name": "",
+        "x": 480,
+        "y": 140,
+        "wires": [
+            [
+                "81935ca6fc0fc7f9",
+                "799de412fe9011cb"
+            ]
+        ]
+    },
+    {
+        "id": "96940c97d549cb19",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "49.13.202.91",
+        "port": "3306",
+        "db": "nerdstuff",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
